@@ -5,6 +5,7 @@ import {
   CreateUserData,
   UsersRepositoty,
 } from "../../repositories/UsersRepository";
+import { hash } from "bcryptjs";
 
 class CreateUserUseCase {
   constructor(private usersRepository: UsersRepositoty) {}
@@ -28,6 +29,9 @@ class CreateUserUseCase {
         status: 409,
       });
     }
+
+    if (process.env.SALT)
+      body.password = await hash(body.password, +process.env.SALT || 12);
 
     return this.usersRepository.create(body);
   }
