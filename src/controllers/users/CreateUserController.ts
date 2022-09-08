@@ -8,7 +8,7 @@ class CreateUserController {
     const usersRepository: PrismaUsersRepository = new PrismaUsersRepository();
     const createUserUseCase = new CreateUserUseCase(usersRepository);
 
-    const user: User = await createUserUseCase.execute(request.body);
+    const user: Partial<User> = await createUserUseCase.execute(request.body);
 
     return response.status(201).json(user);
   }

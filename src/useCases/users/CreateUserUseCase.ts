@@ -10,7 +10,7 @@ import { hash } from "bcryptjs";
 class CreateUserUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
-  async execute(body: CreateUserData): Promise<User> {
+  async execute(body: CreateUserData): Promise<Partial<User>> {
     const schema: ObjectSchema<CreateUserData> = Joi.object({
       name: Joi.string().required(),
       password: Joi.string().min(3).required(),

@@ -7,7 +7,7 @@ export interface CreateUserData {
 }
 
 export interface UsersRepository {
-  create: (data: CreateUserData) => Promise<User>;
+  create: (data: CreateUserData) => Promise<Partial<User>>;
   findByEmail: (email: string) => Promise<User | null>;
   getAll: () => Promise<Partial<User>[]>;
 }
