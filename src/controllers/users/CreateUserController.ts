@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import { Request, Response } from "express";
 import { PrismaUsersRepository } from "../../repositories/prisma/PrismaUsersRepository";
 import { CreateUserUseCase } from "../../useCases/users/CreateUserUseCase";
@@ -7,7 +8,7 @@ class CreateUserController {
     const usersRepository: PrismaUsersRepository = new PrismaUsersRepository();
     const createUserUseCase = new CreateUserUseCase(usersRepository);
 
-    const user = await createUserUseCase.execute(request.body);
+    const user: User = await createUserUseCase.execute(request.body);
 
     return response.status(201).json(user);
   }

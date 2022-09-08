@@ -3,14 +3,14 @@ import Joi, { ObjectSchema } from "joi";
 import { CustomError } from "../../exceptions/CustomError";
 import {
   CreateUserData,
-  UsersRepositoty,
+  UsersRepository,
 } from "../../repositories/UsersRepository";
 import { hash } from "bcryptjs";
 
 class CreateUserUseCase {
-  constructor(private usersRepository: UsersRepositoty) {}
+  constructor(private usersRepository: UsersRepository) {}
 
-  async execute(body: CreateUserData): Promise<User | void> {
+  async execute(body: CreateUserData): Promise<User> {
     const schema: ObjectSchema<CreateUserData> = Joi.object({
       name: Joi.string().required(),
       password: Joi.string().min(3).required(),
