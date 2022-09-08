@@ -37,6 +37,19 @@ class PrismaUsersRepository implements UsersRepository {
       select: { id: true, name: true, email: true },
     });
   }
+
+  findById(id: number): Promise<User | null> {
+    return prisma.user.findFirst({
+      where: { id, deleted: false },
+    });
+  }
+
+  deleteById(id: number): Promise<User> {
+    return prisma.user.update({
+      where: { id },
+      data: { deleted: true },
+    });
+  }
 }
 
 export { PrismaUsersRepository };
