@@ -6,7 +6,7 @@ import {
   UsersRepository,
 } from "../../repositories/UsersRepository";
 import { hash } from "bcryptjs";
-import { environment } from "../../environments";
+import { environment } from "../../environment";
 
 class CreateUserUseCase {
   constructor(private usersRepository: UsersRepository) {}

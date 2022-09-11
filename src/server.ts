@@ -4,7 +4,7 @@ import "express-async-errors";
 import cors from "cors";
 import { routes } from "./routes";
 import { CustomError } from "./exceptions/CustomError";
-import { environment } from "./environments";
+import { environment } from "./environment";
 
 const app: Express = express();
 
