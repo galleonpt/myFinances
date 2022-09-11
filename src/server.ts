@@ -4,6 +4,7 @@ import "express-async-errors";
 import cors from "cors";
 import { routes } from "./routes";
 import { CustomError } from "./exceptions/CustomError";
+import { environment } from "./environments";
 
 const app: Express = express();
 
@@ -37,4 +38,4 @@ app.use(
   }
 );
 
-app.listen(4000, (): void => console.log("Server running"));
+app.listen(environment.PORT, (): void => console.log("Server running"));
