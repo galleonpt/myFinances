@@ -24,6 +24,7 @@
   },
   "scripts": {
     "start": "ts-node-dev --transpile-only src/server.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start:prod": "node build/server.js"
   }
 }
