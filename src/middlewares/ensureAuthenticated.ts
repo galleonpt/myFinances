@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { JwtPayload, verify } from "jsonwebtoken";
+import { IJwtPayload, verify } from "jsonwebtoken";
 
 export function ensureAuthenticated(
   request: Request,
@@ -14,7 +14,10 @@ export function ensureAuthenticated(
 
   try {
     if (process.env.JWT_SECRET) {
-      const info: string | JwtPayload = verify(token, process.env.JWT_SECRET);
+      const info: IJwtPayload = verify(
+        token,
+        process.env.JWT_SECRET
+      ) as IJwtPayload;
 
       if (info.sub) request.id = +info.sub;
       if (info.email) request.email = info.email;
