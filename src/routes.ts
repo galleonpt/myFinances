@@ -9,6 +9,10 @@ import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 const routes: Router = Router();
 
+routes.get("", (_, response) => {
+  return response.json({ success: "YEAH!!!" });
+});
+
 routes.post("/login", new LoginController().handle);
 
 routes.post("/users", new CreateUserController().handle);
