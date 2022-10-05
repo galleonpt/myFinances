@@ -2,6 +2,7 @@ import { Router } from "express";
 import { LoginController } from "./controllers/authentication/LoginController";
 import { CreateCategoryController } from "./controllers/categories/CreateCategoryController";
 import { ListCategoriesController } from "./controllers/categories/ListCategoriesController";
+import { CreateExpenseController } from "./controllers/expenses/CreateExpenseController";
 import { CreateUserController } from "./controllers/users/CreateUserController";
 import { DeleteUserController } from "./controllers/users/DeleteUserController";
 import { ListSingleUserController } from "./controllers/users/ListSingleUserController";
@@ -16,11 +17,13 @@ routes.get("", (_, response) => {
 
 routes.post("/login", new LoginController().handle);
 
+//users
 routes.post("/users", new CreateUserController().handle);
 routes.get("/users", ensureAuthenticated, new ListUsersController().handle);
 routes.get("/users/:id", new ListSingleUserController().handle);
 routes.post("/users/:id", new DeleteUserController().handle);
 
+//categories
 routes.post(
   "/categories",
   ensureAuthenticated,
@@ -31,6 +34,13 @@ routes.get(
   "/categories",
   ensureAuthenticated,
   new ListCategoriesController().handle
+);
+
+//expenses
+routes.post(
+  "/expenses",
+  ensureAuthenticated,
+  new CreateExpenseController().handle
 );
 
 export { routes };
