@@ -29,10 +29,14 @@ class PrismaCategoriesRepository implements CategoriesRepository {
     });
   }
 
-  getAll(): Promise<Partial<Category>[]> {
+  getAll(userId: number): Promise<Partial<Category>[]> {
     return prisma.category.findMany({
-      where: { deleted: false },
-      select: { id: true, name: true },
+      where: { deleted: false, userId },
+      select: {
+        id: true,
+        name: true,
+        user: { select: { id: true, name: true } },
+      },
     });
   }
 

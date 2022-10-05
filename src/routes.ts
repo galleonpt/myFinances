@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { LoginController } from "./controllers/authentication/LoginController";
 import { CreateCategoryController } from "./controllers/categories/CreateCategoryController";
+import { ListCategoriesController } from "./controllers/categories/ListCategoriesController";
 import { CreateUserController } from "./controllers/users/CreateUserController";
 import { DeleteUserController } from "./controllers/users/DeleteUserController";
 import { ListSingleUserController } from "./controllers/users/ListSingleUserController";
@@ -24,6 +25,12 @@ routes.post(
   "/categories",
   ensureAuthenticated,
   new CreateCategoryController().handle
+);
+
+routes.get(
+  "/categories",
+  ensureAuthenticated,
+  new ListCategoriesController().handle
 );
 
 export { routes };

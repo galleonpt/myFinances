@@ -7,7 +7,7 @@ export interface CreateCategoryData {
 
 export interface CategoriesRepository {
   create: (data: CreateCategoryData) => Promise<Partial<Category>>;
-  getAll: () => Promise<Partial<Category>[]>;
+  getAll: (userId: number) => Promise<Partial<Category>[]>;
   findById: (id: number) => Promise<Partial<Category> | null>;
   // deleteById: (id: number) => void;
 }
