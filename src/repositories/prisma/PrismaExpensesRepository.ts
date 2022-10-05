@@ -15,7 +15,7 @@ class PrismaExpensesRepository implements ExpensesRepository {
       data: {
         name,
         userId,
-        currency,
+        currency: currency.toUpperCase(),
         categoryId,
         place,
         value,
