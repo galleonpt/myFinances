@@ -3,6 +3,7 @@ import { LoginController } from "./controllers/authentication/LoginController";
 import { CreateCategoryController } from "./controllers/categories/CreateCategoryController";
 import { ListCategoriesController } from "./controllers/categories/ListCategoriesController";
 import { CreateExpenseController } from "./controllers/expenses/CreateExpenseController";
+import { ListExpensesController } from "./controllers/expenses/ListExpensesController";
 import { CreateUserController } from "./controllers/users/CreateUserController";
 import { DeleteUserController } from "./controllers/users/DeleteUserController";
 import { ListSingleUserController } from "./controllers/users/ListSingleUserController";
@@ -41,6 +42,12 @@ routes.post(
   "/expenses",
   ensureAuthenticated,
   new CreateExpenseController().handle
+);
+
+routes.get(
+  "/expenses",
+  ensureAuthenticated,
+  new ListExpensesController().handle
 );
 
 export { routes };
