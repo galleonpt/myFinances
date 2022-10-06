@@ -40,7 +40,6 @@ model Category {
 model Expense {
   id        Int      @id @default(autoincrement())
   name      String
-  currency  String
   value     Float
   place     String
   deleted   Boolean  @default(false)
@@ -52,5 +51,18 @@ model Expense {
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
 
+  currency   Currency @relation(fields: [currencyId], references: [id])
+  currencyId Int      @default(49) //EUR
+
   @@map("expenses")
+}
+
+model Currency {
+  id   Int    @id @default(autoincrement())
+  name String
+  code String
+
+  expenses Expense[]
+
+  @@map("currencies")
 }

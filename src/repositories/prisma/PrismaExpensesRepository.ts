@@ -6,7 +6,7 @@ class PrismaExpensesRepository implements ExpensesRepository {
   async create({
     name,
     userId,
-    currency,
+    currencyId,
     value,
     place,
     categoryId,
@@ -15,7 +15,7 @@ class PrismaExpensesRepository implements ExpensesRepository {
       data: {
         name,
         userId,
-        currency: currency.toUpperCase(),
+        currencyId,
         categoryId,
         place,
         value,
@@ -24,9 +24,15 @@ class PrismaExpensesRepository implements ExpensesRepository {
       select: {
         id: true,
         name: true,
-        currency: true,
         value: true,
         place: true,
+        currency: {
+          select: {
+            id: true,
+            name: true,
+            code: true,
+          },
+        },
         user: {
           select: {
             id: true,
@@ -49,9 +55,15 @@ class PrismaExpensesRepository implements ExpensesRepository {
       select: {
         id: true,
         name: true,
-        currency: true,
         value: true,
         place: true,
+        currency: {
+          select: {
+            id: true,
+            name: true,
+            code: true,
+          },
+        },
         user: {
           select: {
             id: true,
@@ -74,9 +86,15 @@ class PrismaExpensesRepository implements ExpensesRepository {
       select: {
         id: true,
         name: true,
-        currency: true,
         value: true,
         place: true,
+        currency: {
+          select: {
+            id: true,
+            name: true,
+            code: true,
+          },
+        },
         user: {
           select: {
             id: true,

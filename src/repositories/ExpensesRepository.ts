@@ -3,7 +3,7 @@ import { Expense } from "@prisma/client";
 export interface CreateExpenseData {
   name: string;
   userId: number;
-  currency: string;
+  currencyId: number;
   value: number;
   place: string;
   categoryId: number;

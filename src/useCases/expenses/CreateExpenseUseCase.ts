@@ -17,7 +17,7 @@ class CreateExpenseUseCase {
     const schema: ObjectSchema<CreateExpenseData> = Joi.object({
       name: Joi.string().required(),
       userId: Joi.number().required(),
-      currency: Joi.string().required(),
+      currencyId: Joi.number().required(),
       value: Joi.number().required().min(0),
       place: Joi.string().required(),
       categoryId: Joi.number().required(),
